@@ -1,0 +1,23 @@
+[package]
+name = "eulers"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[[bin]]
+name = "pr001"
+path = "src/bin/pr001.rs"
+
+[[bin]]
+name = "pr002"
+path = "src/bin/pr002.rs"
+
+[dependencies]
