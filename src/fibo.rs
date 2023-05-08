@@ -29,7 +29,7 @@ impl Iterator for Fibo {
     fn next(&mut self) -> Option<Self::Item> {
         let current = self.current.clone();
 
-        (self.current, self.next) = (self.next.clone(), current.clone() + self.next.clone());
+        (self.current, self.next) = (self.next.clone(), self.current.clone() + self.next.clone());
 
         // Since there's no endpoint to a Fibonacci sequence, the `Iterator`
         // will never return `None`, and `Some` is always returned.
