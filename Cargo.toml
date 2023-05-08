@@ -21,3 +21,4 @@ name = "pr002"
 path = "src/bin/pr002.rs"
 
 [dependencies]
+ibig = "0.3.6"

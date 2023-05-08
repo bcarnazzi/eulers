@@ -1,13 +1,15 @@
+use ibig::UBig;
+
 pub struct Fibo {
-    current: u64,
-    next: u64,
+    current: UBig,
+    next: UBig,
 }
 
 impl Fibo {
-    pub fn new(u0: u64, u1: u64) -> Self {
+    pub fn new(u0: usize, u1: usize) -> Self {
         Fibo {
-            current: u0,
-            next: u1,
+            current: UBig::from(u0),
+            next: UBig::from(u1),
         }
     }
 }
@@ -16,7 +18,7 @@ impl Fibo {
 // The `Iterator` trait only requires a method to be defined for the `next` element.
 impl Iterator for Fibo {
     // We can refer to this type using Self::Item
-    type Item = u64;
+    type Item = UBig;
 
     // Here, we define the sequence using `.curr` and `.next`.
     // The return type is `Option<T>`:
@@ -25,9 +27,9 @@ impl Iterator for Fibo {
     // We use Self::Item in the return type, so we can change
     // the type without having to update the function signatures.
     fn next(&mut self) -> Option<Self::Item> {
-        let current = self.current;
+        let current = self.current.clone();
 
-        (self.current, self.next) = (self.next, current + self.next);
+        (self.current, self.next) = (self.next.clone(), current.clone() + self.next.clone());
 
         // Since there's no endpoint to a Fibonacci sequence, the `Iterator`
         // will never return `None`, and `Some` is always returned.
